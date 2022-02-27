@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/api/v1/user/authenticated").authenticated()
+                .antMatchers("/api/v1/user/register").permitAll()
                 .antMatchers("/h2-console/**").permitAll();
         http.formLogin();
         http.httpBasic();

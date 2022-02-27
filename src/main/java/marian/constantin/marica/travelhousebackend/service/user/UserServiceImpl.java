@@ -29,4 +29,11 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(username);
         return new TravelHouseUserDetails(user);
     }
+
+    @Override
+    public String register(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return "User successfully registered";
+    }
 }
