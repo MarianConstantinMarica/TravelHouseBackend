@@ -1,4 +1,4 @@
-package marian.constantin.marica.travelhousebackend.request;
+package marian.constantin.marica.travelhousebackend.request.user;
 
 import lombok.*;
 

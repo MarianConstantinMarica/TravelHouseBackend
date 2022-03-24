@@ -1,4 +1,4 @@
-package marian.constantin.marica.travelhousebackend.request;
+package marian.constantin.marica.travelhousebackend.request.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ChangePasswordRequest {
+public class AddPhoneNumberRequest {
 
     private String email;
-    private String oldPassword;
-    private String newPassword;
+    private String phoneNumber;
 }

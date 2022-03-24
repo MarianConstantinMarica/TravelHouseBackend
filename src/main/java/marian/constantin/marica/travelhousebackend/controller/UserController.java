@@ -1,9 +1,9 @@
 package marian.constantin.marica.travelhousebackend.controller;
 
 import marian.constantin.marica.travelhousebackend.model.User;
-import marian.constantin.marica.travelhousebackend.request.AddPhoneNumberRequest;
-import marian.constantin.marica.travelhousebackend.request.ChangePasswordRequest;
-import marian.constantin.marica.travelhousebackend.request.GetUserDetailsRequest;
+import marian.constantin.marica.travelhousebackend.request.user.AddPhoneNumberRequest;
+import marian.constantin.marica.travelhousebackend.request.user.ChangePasswordRequest;
+import marian.constantin.marica.travelhousebackend.request.user.GetUserDetailsRequest;
 import marian.constantin.marica.travelhousebackend.response.UserDetailsResponse;
 import marian.constantin.marica.travelhousebackend.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
