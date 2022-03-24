@@ -2,6 +2,7 @@ package marian.constantin.marica.travelhousebackend.controller;
 
 import marian.constantin.marica.travelhousebackend.model.User;
 import marian.constantin.marica.travelhousebackend.request.AddPhoneNumberRequest;
+import marian.constantin.marica.travelhousebackend.request.ChangePasswordRequest;
 import marian.constantin.marica.travelhousebackend.request.GetUserDetailsRequest;
 import marian.constantin.marica.travelhousebackend.response.UserDetailsResponse;
 import marian.constantin.marica.travelhousebackend.service.user.UserService;
@@ -45,5 +46,13 @@ public class UserController {
             return new ResponseEntity<>("Email not exist", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>("Phone Number added", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/changePassword")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordRequest request) {
+        if (userService.changePassword(request)) {
+            return new ResponseEntity<>("Password was changed!", HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Error! Password not changed!", HttpStatus.BAD_REQUEST);
     }
 }

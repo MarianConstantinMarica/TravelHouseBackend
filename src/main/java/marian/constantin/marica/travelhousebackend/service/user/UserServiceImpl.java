@@ -3,6 +3,7 @@ package marian.constantin.marica.travelhousebackend.service.user;
 import marian.constantin.marica.travelhousebackend.model.User;
 import marian.constantin.marica.travelhousebackend.repository.UserRepository;
 import marian.constantin.marica.travelhousebackend.request.AddPhoneNumberRequest;
+import marian.constantin.marica.travelhousebackend.request.ChangePasswordRequest;
 import marian.constantin.marica.travelhousebackend.request.GetUserDetailsRequest;
 import marian.constantin.marica.travelhousebackend.response.UserDetailsResponse;
 import marian.constantin.marica.travelhousebackend.security.PasswordEncoder;
@@ -57,6 +58,22 @@ public class UserServiceImpl implements UserService {
             return false;
         }
         userRepository.updatePhoneNumber(request.getEmail(), request.getPhoneNumber());
+        return true;
+    }
+
+    @Transactional
+    @Override
+    public boolean changePassword(ChangePasswordRequest request) {
+        if (!userRepository.existsByEmail(request.getEmail())) {
+            return false;
+        }
+        if (passwordEncoder.matches(
+                request.getOldPassword(),
+                userRepository.findByEmail(request.getEmail()).getPassword())) {
+            userRepository.changePassword(
+                    request.getEmail(),
+                    passwordEncoder.encode(request.getNewPassword()));
+        }
         return true;
     }
 }
