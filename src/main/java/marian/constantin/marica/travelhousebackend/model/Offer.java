@@ -36,6 +36,10 @@ public class Offer {
     @Column(nullable = false)
     private OfferType offerType;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private User user;
+
     @OneToMany(mappedBy = "offer")
     private Set<OfferImage> images;
 }
