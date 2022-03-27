@@ -33,7 +33,7 @@ public class OfferServiceImpl implements OfferService {
         request.getOffer().setOfferType(OfferType.Copper);
         offerRepository.save(request.getOffer());
         request.getOfferImages()
-                .forEach(offerImage -> { offerImage.setOffer(request.getOffer()); });
+                .forEach(offerImage -> offerImage.setOffer(request.getOffer()));
         offerImageRepository.saveAll(request.getOfferImages());
     }
 

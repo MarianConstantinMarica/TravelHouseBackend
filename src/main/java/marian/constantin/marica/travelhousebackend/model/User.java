@@ -40,4 +40,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Offer> offers;
+
+    @OneToMany(mappedBy = "user")
+    private Set<OfferReview> reviews;
 }

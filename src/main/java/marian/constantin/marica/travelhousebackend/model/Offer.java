@@ -43,4 +43,7 @@ public class Offer {
 
     @OneToMany(mappedBy = "offer")
     private Set<OfferImage> images;
+
+    @OneToMany(mappedBy = "offer")
+    private Set<OfferReview> reviews;
 }
