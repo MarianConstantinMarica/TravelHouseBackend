@@ -1,12 +1,11 @@
 package marian.constantin.marica.travelhousebackend.service.offer;
 
 import marian.constantin.marica.travelhousebackend.model.Offer;
+import marian.constantin.marica.travelhousebackend.model.OfferType;
 import marian.constantin.marica.travelhousebackend.repository.OfferImageRepository;
 import marian.constantin.marica.travelhousebackend.repository.OfferRepository;
-import marian.constantin.marica.travelhousebackend.request.offer.DeleteOfferRequest;
-import marian.constantin.marica.travelhousebackend.request.offer.UpdateDescriptionRequest;
-import marian.constantin.marica.travelhousebackend.request.offer.UpdatePriceRequest;
-import marian.constantin.marica.travelhousebackend.request.offer.UpdateTitleRequest;
+import marian.constantin.marica.travelhousebackend.request.offer.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,6 +17,7 @@ public class OfferServiceImpl implements OfferService {
     private final OfferRepository offerRepository;
     private final OfferImageRepository offerImageRepository;
 
+    @Autowired
     public OfferServiceImpl(OfferRepository offerRepository, OfferImageRepository offerImageRepository) {
         this.offerRepository = offerRepository;
         this.offerImageRepository = offerImageRepository;
@@ -29,8 +29,12 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public void createOffer(Offer offer) {
-        offerRepository.save(offer);
+    public void createOffer(CreateOfferRequest request) {
+        request.getOffer().setOfferType(OfferType.Copper);
+        offerRepository.save(request.getOffer());
+        request.getOfferImages()
+                .forEach(offerImage -> { offerImage.setOffer(request.getOffer()); });
+        offerImageRepository.saveAll(request.getOfferImages());
     }
 
     @Transactional
@@ -74,10 +78,24 @@ public class OfferServiceImpl implements OfferService {
 
     @Transactional
     @Override
+    public boolean updateOfferByType(UpdateOfferTypeRequest request) {
+        if (!offerRepository.existsById(request.getOfferId())) {
+            return false;
+        }
+        offerRepository.updateOfferType(
+                request.getOfferId(),
+                request.getOfferType()
+        );
+        return true;
+    }
+
+    @Transactional
+    @Override
     public boolean deleteOffer(DeleteOfferRequest request) {
         if (!offerRepository.existsById(request.getOfferId())) {
             return false;
         }
+        offerImageRepository.deleteAllByOfferId(request.getOfferId());
         offerRepository.deleteOfferById(request.getOfferId());
         return true;
     }

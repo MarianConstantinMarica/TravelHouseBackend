@@ -19,9 +19,8 @@ public class OfferImage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Lob
-    @Column(nullable = false, columnDefinition = "BLOB")
-    private byte[] photo;
+    @Column(nullable = false)
+    private String s3ImageLink;
 
     @ManyToOne
     @JoinColumn(nullable = false)

@@ -1,5 +1,6 @@
 package marian.constantin.marica.travelhousebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Offer {
 
     @Id
@@ -33,6 +33,7 @@ public class Offer {
     @Column(nullable = false)
     private String description;
 
+    @JsonIgnore
     @Column(nullable = false)
     private OfferType offerType;
 

@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface OfferImageRepository extends JpaRepository<OfferImage, UUID> {
+    void deleteAllByOfferId(UUID offerId);
 }

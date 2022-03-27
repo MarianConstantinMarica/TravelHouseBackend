@@ -1,10 +1,7 @@
 package marian.constantin.marica.travelhousebackend.controller;
 
 import marian.constantin.marica.travelhousebackend.model.Offer;
-import marian.constantin.marica.travelhousebackend.request.offer.DeleteOfferRequest;
-import marian.constantin.marica.travelhousebackend.request.offer.UpdateDescriptionRequest;
-import marian.constantin.marica.travelhousebackend.request.offer.UpdatePriceRequest;
-import marian.constantin.marica.travelhousebackend.request.offer.UpdateTitleRequest;
+import marian.constantin.marica.travelhousebackend.request.offer.*;
 import marian.constantin.marica.travelhousebackend.service.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,8 +27,8 @@ public class OfferController {
     }
 
     @PostMapping("/createOffer")
-    public ResponseEntity<Void> createOffer(@RequestBody Offer offer) {
-        offerService.createOffer(offer);
+    public ResponseEntity<Void> createOffer(@RequestBody CreateOfferRequest request) {
+        offerService.createOffer(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -55,6 +52,14 @@ public class OfferController {
     public ResponseEntity<String> updateOfferByDescription(@RequestBody UpdateDescriptionRequest request) {
         if (offerService.updateOfferByDescription(request)) {
             return new ResponseEntity<>("Offer updated by description", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Error on update", HttpStatus.BAD_REQUEST);
+    }
+
+    @PutMapping("/updateOfferByType")
+    public ResponseEntity<String> updateOfferByType(@RequestBody UpdateOfferTypeRequest request) {
+        if (offerService.updateOfferByType(request)) {
+            return new ResponseEntity<>("Offer updated by type", HttpStatus.OK);
         }
         return new ResponseEntity<>("Error on update", HttpStatus.BAD_REQUEST);
     }

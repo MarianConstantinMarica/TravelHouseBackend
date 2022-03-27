@@ -29,6 +29,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/user/register").permitAll()
                 .antMatchers("/api/v1/user/addPhoneNumber").authenticated()
                 .antMatchers("/api/v1/user/changePassword").authenticated()
+                .antMatchers("/api/v1/offer/getOffers").authenticated()
+                .antMatchers("/api/v1/offer/createOffer").authenticated()
+                .antMatchers("/api/v1/offer/updateOfferByTitle").authenticated()
+                .antMatchers("/api/v1/offer/updateOfferByPrice").authenticated()
+                .antMatchers("/api/v1/offer/updateOfferByDescription").authenticated()
+                .antMatchers("/api/v1/offer/updateOfferByType").authenticated()
+                .antMatchers("/api/v1/offer/deleteOffer").authenticated()
                 .antMatchers("/h2-console/**").permitAll();
         http.formLogin();
         http.httpBasic();

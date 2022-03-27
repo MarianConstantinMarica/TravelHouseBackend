@@ -1,6 +1,7 @@
 package marian.constantin.marica.travelhousebackend.repository;
 
 import marian.constantin.marica.travelhousebackend.model.Offer;
+import marian.constantin.marica.travelhousebackend.model.OfferType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,6 +24,10 @@ public interface OfferRepository extends JpaRepository<Offer, UUID> {
     @Modifying
     @Query("update Offer o set o.description = :description where o.id = :id")
     void updateDescription(UUID id, String description);
+
+    @Modifying
+    @Query("update Offer o set o.offerType = :offerType where o.id = :id")
+    void updateOfferType(UUID id, OfferType offerType);
 
     void deleteOfferById(UUID id);
 }
