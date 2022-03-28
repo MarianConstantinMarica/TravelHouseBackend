@@ -65,7 +65,7 @@ public class OfferController {
     }
 
     @DeleteMapping("/deleteOffer")
-    public ResponseEntity<String> updateOfferByDescription(@RequestBody DeleteOfferRequest request) {
+    public ResponseEntity<String> deleteOffer(@RequestBody DeleteOfferRequest request) {
         if (offerService.deleteOffer(request)) {
             return new ResponseEntity<>("Deleted Offer", HttpStatus.OK);
         }
