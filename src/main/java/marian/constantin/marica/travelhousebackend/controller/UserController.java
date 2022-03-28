@@ -4,7 +4,7 @@ import marian.constantin.marica.travelhousebackend.model.User;
 import marian.constantin.marica.travelhousebackend.request.user.AddPhoneNumberRequest;
 import marian.constantin.marica.travelhousebackend.request.user.ChangePasswordRequest;
 import marian.constantin.marica.travelhousebackend.request.user.GetUserDetailsRequest;
-import marian.constantin.marica.travelhousebackend.response.UserDetailsResponse;
+import marian.constantin.marica.travelhousebackend.response.user.UserDetailsResponse;
 import marian.constantin.marica.travelhousebackend.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

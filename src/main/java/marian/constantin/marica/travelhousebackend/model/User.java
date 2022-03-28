@@ -42,5 +42,11 @@ public class User {
     private Set<Offer> offers;
 
     @OneToMany(mappedBy = "user")
-    private Set<OfferReview> reviews;
+    private Set<OfferReview> offerReviews;
+
+    @OneToMany(mappedBy = "owner")
+    private Set<TouristReview> touristReviewsOwner;
+
+    @OneToMany(mappedBy = "tourist")
+    private Set<TouristReview> touristReviewsTourist;
 }
