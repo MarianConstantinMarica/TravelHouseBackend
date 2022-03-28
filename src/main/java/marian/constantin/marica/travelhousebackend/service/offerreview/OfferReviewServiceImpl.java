@@ -27,4 +27,11 @@ public class OfferReviewServiceImpl implements OfferReviewService {
     public List<OfferReview> getOfferReviewsByTourist(UUID touristId) {
         return offerReviewRepository.findAllByUserId(touristId);
     }
+
+    @Override
+    public void createOfferReview(OfferReview offerReview) {
+
+    }
+
+
 }

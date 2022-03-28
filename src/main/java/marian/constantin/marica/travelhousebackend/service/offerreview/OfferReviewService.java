@@ -9,4 +9,6 @@ public interface OfferReviewService {
     List<OfferReview> getOfferReviewsByOffer(UUID offerId);
 
     List<OfferReview> getOfferReviewsByTourist(UUID touristId);
+
+    void createOfferReview(OfferReview offerReview);
 }

@@ -1,15 +1,12 @@
 package marian.constantin.marica.travelhousebackend.controller;
 
-import marian.constantin.marica.travelhousebackend.model.Offer;
 import marian.constantin.marica.travelhousebackend.model.OfferReview;
+import marian.constantin.marica.travelhousebackend.request.offer.CreateOfferRequest;
 import marian.constantin.marica.travelhousebackend.service.offerreview.OfferReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -33,5 +30,11 @@ public class OfferReviewController {
     @GetMapping("/getOfferReviews/{touristId}")
     public ResponseEntity<List<OfferReview>> getOfferReviewsByTourist(@PathVariable UUID touristId) {
         return new ResponseEntity<>(offerReviewService.getOfferReviewsByTourist(touristId), HttpStatus.OK);
+    }
+
+    @PostMapping("/createOfferReview")
+    public ResponseEntity<Void> createOfferReview(@RequestBody OfferReview offerReview) {
+        offerReviewService.createOfferReview(offerReview);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
