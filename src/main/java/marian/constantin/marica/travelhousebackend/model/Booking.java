@@ -30,5 +30,7 @@ public class Booking {
     @JoinColumn(nullable = false)
     private User tourist;
 
-
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Offer offer;
 }

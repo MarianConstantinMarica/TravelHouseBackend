@@ -46,4 +46,7 @@ public class Offer {
 
     @OneToMany(mappedBy = "offer")
     private Set<OfferReview> reviews;
+
+    @OneToMany(mappedBy = "offer")
+    private Set<Booking> bookings;
 }

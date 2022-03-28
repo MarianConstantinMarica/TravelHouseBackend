@@ -49,4 +49,7 @@ public class User {
 
     @OneToMany(mappedBy = "tourist")
     private Set<TouristReview> touristReviewsTourist;
+
+    @OneToMany(mappedBy = "tourist")
+    private Set<Booking> bookings;
 }
