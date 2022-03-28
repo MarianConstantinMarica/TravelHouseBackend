@@ -42,6 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/offerReview/updateOfferReviewByRating").authenticated()
                 .antMatchers("/api/v1/offerReview/updateOfferReviewByComment").authenticated()
                 .antMatchers("/api/v1/offerReview/deleteOfferReview").authenticated()
+                .antMatchers("/api/v1/touristReview/getStatusByTourist/**").authenticated()
+                .antMatchers("/api/v1/touristReview/addTouristReview/**").authenticated()
                 .antMatchers("/h2-console/**").permitAll();
         http.formLogin();
         http.httpBasic();
