@@ -26,6 +26,12 @@ public class Booking {
     @Column(nullable = false)
     private Date endDate;
 
+    @Column(nullable = false)
+    private Boolean approved;
+
+    @Column(nullable = false)
+    private Boolean cancelBooking;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private User tourist;
