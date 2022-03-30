@@ -44,6 +44,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/offerReview/deleteOfferReview").authenticated()
                 .antMatchers("/api/v1/touristReview/getStatusByTourist/**").authenticated()
                 .antMatchers("/api/v1/touristReview/addTouristReview/**").authenticated()
+                .antMatchers("/api/v1/booking/getBookingsByOffer/**").authenticated()
+                .antMatchers("/api/v1/booking/getBookingsByTourist/**").authenticated()
+                .antMatchers("/api/v1/booking/addBooking").authenticated()
+                .antMatchers("/api/v1/booking/approveBooking").authenticated()
+                .antMatchers("/api/v1/booking/cancelBooking").authenticated()
+                .antMatchers("/api/v1/booking/deleteBooking").authenticated()
                 .antMatchers("/h2-console/**").permitAll();
         http.formLogin();
         http.httpBasic();
